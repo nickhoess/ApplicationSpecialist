@@ -1,5 +1,6 @@
-// filepath: c:\ApplicationSpecialist\prototype\src\main\java\my\project\prototype\persistenceService\PersistenceServiceImpl.java
 package my.project.prototype.persistenceService;
+
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,16 @@ public class PersistenceServiceImpl {
         return true;
     }
 
+    public User getUserbyID(String id) {
+        Optional<MongoUser> optionalMongoUser = mongoUserRepository.findById(id);
+        if (optionalMongoUser.isPresent()) {
+            MongoUser mongoUser = optionalMongoUser.get();
+            return transformToUser(mongoUser);
+        } else {
+            return null; // or throw an exception if preferred
+        }
+    }
+
     private MongoUser transformToMongoUser(User user) {
         MongoUser mongoUser = new MongoUser();
         mongoUser.setName(user.getName());
@@ -37,5 +48,18 @@ public class PersistenceServiceImpl {
         mongoUser.setEducation(user.getEducation());
         mongoUser.setProjects(user.getProjects());
         return mongoUser;
+    }
+
+    private User transformToUser(MongoUser mongoUser) {
+        User user = new User();
+        user.setName(mongoUser.getName());
+        user.setEmail(mongoUser.getEmail());
+        user.setPhone(mongoUser.getPhone());
+        user.setAddress(mongoUser.getAddress());
+        user.setSkills(mongoUser.getSkills());
+        user.setWorkExperiences(mongoUser.getWorkExperiences());
+        user.setEducation(mongoUser.getEducation());
+        user.setProjects(mongoUser.getProjects());
+        return user;
     }
 }

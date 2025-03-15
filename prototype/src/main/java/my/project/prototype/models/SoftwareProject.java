@@ -16,11 +16,12 @@ public class SoftwareProject {
     private String architecture;
     private String versionControl;
     private String projectType; // e.g., Backend, Frontend, Full Stack, Bot, etc.
+    private List<String> informationItems; // New field for information items
 
     public SoftwareProject() {
     }
 
-    public SoftwareProject(String name, String description, String version, List<String> languages, List<String> technologies, List<String> frameworks, List<String> databases, List<String> tools, List<String> libraries, String architecture, String versionControl, String projectType) {
+    public SoftwareProject(String name, String description, String version, List<String> languages, List<String> technologies, List<String> frameworks, List<String> databases, List<String> tools, List<String> libraries, String architecture, String versionControl, String projectType, List<String> informationItems) {
         this.name = name;
         this.description = description;
         this.version = version;
@@ -33,6 +34,7 @@ public class SoftwareProject {
         this.architecture = architecture;
         this.versionControl = versionControl;
         this.projectType = projectType;
+        this.informationItems = informationItems; // Initialize new field
     }
 
     public String getName() {
@@ -131,6 +133,14 @@ public class SoftwareProject {
         this.projectType = projectType;
     }
 
+    public List<String> getInformationItems() {
+        return informationItems;
+    }
+
+    public void setInformationItems(List<String> informationItems) {
+        this.informationItems = informationItems;
+    }
+
     @Override
     public String toString() {
         return "SoftwareProject{" +
@@ -146,6 +156,7 @@ public class SoftwareProject {
                 ", architecture='" + architecture + '\'' +
                 ", versionControl='" + versionControl + '\'' +
                 ", projectType='" + projectType + '\'' +
+                ", informationItems=" + informationItems + // Include new field in toString
                 '}';
     }
 }

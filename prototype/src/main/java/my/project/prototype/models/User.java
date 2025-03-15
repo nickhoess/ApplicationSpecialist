@@ -9,7 +9,7 @@ public class User {
     private String phone;
     private String address;
     private List<String> skills;
-    private List<WorkExperience> workExperiences; // List of work experiences
+    private List<WorkExperience> workExperiences; // Changed to List<WorkExperience>
     private List<String> education; // List of degrees or certifications
     private List<SoftwareProject> projects;
 

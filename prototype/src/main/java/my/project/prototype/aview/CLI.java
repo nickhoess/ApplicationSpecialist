@@ -1,7 +1,6 @@
 package my.project.prototype.aview;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +37,11 @@ public class CLI {
 
                 // Handle commands here
                 switch (command.toLowerCase()) {
-                    case "hello" -> System.out.println("Hello, World!");
-                    case "set-user" -> setUser(scanner);
+                    case "hello" -> {
+                        System.out.println("Hello, There!");
+                        System.out.println("----------------!General Kenobi");
+                    }
+                    case "set-user" -> readPersonalInfo(scanner);
                     case "show-user" -> showUser();
                     case "generate-cv" -> generateCV();
                     case "help" -> showHelp();
@@ -61,7 +63,7 @@ public class CLI {
         }
     }
 
-    private void setUser(Scanner scanner) {
+    private User readPersonalInfo(Scanner scanner) {
         user = new User();
         System.out.print("Enter name: ");
         user.setName(scanner.nextLine());
@@ -72,13 +74,26 @@ public class CLI {
         System.out.print("Enter address: ");
         user.setAddress(scanner.nextLine());
 
-        // Add more interactive inputs for skills, work experiences, education, and projects as needed
-        // For simplicity, we'll use empty lists here
-        user.setSkills(new ArrayList<>());
-        user.setWorkExperiences(new ArrayList<>());
-        user.setEducation(new ArrayList<>());
-        user.setProjects(new ArrayList<>());
+        // Prompt for paths to JSON files for additional information
+        System.out.print("Enter path to JSON file for skills: ");
+        String skillsJsonFilePath = scanner.nextLine();
+        System.out.println("Skills JSON file path: " + skillsJsonFilePath);
+
+        System.out.print("Enter path to JSON file for work experiences: ");
+        String workExperiencesJsonFilePath = scanner.nextLine();
+        System.out.println("Work experiences JSON file path: " + workExperiencesJsonFilePath);
+
+        System.out.print("Enter path to JSON file for education: ");
+        String educationJsonFilePath = scanner.nextLine();
+        System.out.println("Education JSON file path: " + educationJsonFilePath);
+
+        System.out.print("Enter path to JSON file for projects: ");
+        String projectsJsonFilePath = scanner.nextLine();
+        System.out.println("Projects JSON file path: " + projectsJsonFilePath);
+
         System.out.println("User information set.");
+        
+        return user;
     }
 
     private void showUser() {
@@ -91,7 +106,7 @@ public class CLI {
 
     private void showHelp() {
         System.out.println("Available commands:");
-        System.out.println("  hello       - Print 'Hello, World!'");
+        System.out.println("  hello       - Print 'Hello, There!' and 'General Kenobi!'");
         System.out.println("  set-user    - Set user information");
         System.out.println("  show-user   - Show current user information");
         System.out.println("  generate-cv - Generate CV in LaTeX format");
