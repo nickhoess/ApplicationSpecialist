@@ -1,18 +1,24 @@
 package my.project.prototype;
 
-import my.project.prototype.models.User;
-import my.project.prototype.controller.HomeController;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import java.util.ArrayList;
-import java.util.Scanner;
+
+import my.project.prototype.controller.HomeController;
+import my.project.prototype.models.User;
 
 @SpringBootApplication
 public class PrototypeApplication implements CommandLineRunner {
 
+    @Autowired
+    private HomeController homecontroller;
+    
     private User user;
-    private HomeController homecontroller = new HomeController();
 
     public static void main(String[] args) {
         SpringApplication.run(PrototypeApplication.class, args);
@@ -43,24 +49,12 @@ public class PrototypeApplication implements CommandLineRunner {
 
                 // Handle commands here
                 switch (command.toLowerCase()) {
-                    case "hello":
-                        System.out.println("Hello, World!");
-                        break;
-                    case "set-user":
-                        setUser(scanner);
-                        break;
-                    case "show-user":
-                        showUser();
-                        break;
-                    case "generate-cv":
-                        generateCV();
-                        break;
-                    case "help":
-                        showHelp();
-                        break;
-                    default:
-                        System.out.println("Unknown command: " + command);
-                        break;
+                    case "hello" -> System.out.println("Hello, World!");
+                    case "set-user" -> setUser(scanner);
+                    case "show-user" -> showUser();
+                    case "generate-cv" -> generateCV();
+                    case "help" -> showHelp();
+                    default -> System.out.println("Unknown command: " + command);
                 }
             }
         } finally {
@@ -72,7 +66,7 @@ public class PrototypeApplication implements CommandLineRunner {
             if (user != null) {
             homecontroller.generateCV(user);
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Failed to generate CV: " + e.getMessage());
         }
     }
@@ -94,7 +88,6 @@ public class PrototypeApplication implements CommandLineRunner {
         user.setWorkExperiences(new ArrayList<>());
         user.setEducation(new ArrayList<>());
         user.setProjects(new ArrayList<>());
-
         System.out.println("User information set.");
     }
 
