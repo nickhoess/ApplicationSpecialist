@@ -1,6 +1,6 @@
 # 🛠️ Prototype Application
 
-![Project Logo](tas.png)
+![Project Logo](tas_pic.png)
 
 ## 🚧 Project Status: In Development 🚧
 
