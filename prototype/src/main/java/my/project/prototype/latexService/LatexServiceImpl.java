@@ -23,7 +23,8 @@ public class LatexServiceImpl implements LatexServiceInterface {
                     String key = matcher.group(1);
                     if (!values.containsKey(key)) {
                         System.out.println("Key not found: " + key);
-                        return false;
+                        //map not complete yet
+                        break;
                     }
                     line = line.replace("<" + key + ">", values.get(key));
                 }
