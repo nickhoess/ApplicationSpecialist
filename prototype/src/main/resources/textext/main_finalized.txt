@@ -46,11 +46,11 @@
 %	Comment any of the lines below if they are not required
 %----------------------------------------------------------------------------------------
 
-\name{wefwf}
-\address{werwer}
-\mobile{werwer}
+\name{wef}
+\address{D?rrenstr.34, 35463456 talhowe, ak-st}
+\mobile{hohohoh}
 
-\email{werwer}
+\email{wef}
 %\homepage{www.posquit0.com}
 %\github{posquit0}
 %\linkedin{posquit0}
