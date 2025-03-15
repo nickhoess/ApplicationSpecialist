@@ -1,6 +1,6 @@
 # 🛠️ Prototype Application
 
-![Project Logo](tas.png)
+![Project Logo](tas-picture.png)
 
 ## 🚧 Project Status: In Development 🚧
 
@@ -66,6 +66,7 @@ Configuration and template files used in the application.
 ## 💻 Prerequisites
 
 Ensure you have the following installed before running the application:
+
 ✅ **Java 17**  
 ✅ **Gradle**  
 ✅ **JUnit**
