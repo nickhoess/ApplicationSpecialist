@@ -26,7 +26,7 @@ When you run the application, you will be presented with a simple **shell interf
 
 ---
 
-## 🏛️ MVC Architecture  
+## 🏛️ MVC + S Architecture  
 
 ### 🖥️ **View (User Interface)**
 Handles user interaction via the **Command-Line Interface (CLI)**.  
@@ -41,7 +41,8 @@ Manages user interactions and delegates processing to the service layer.
 ### 🖨️ **Service (Business Logic & Processing)**
 Handles the core processing and business logic.  
 
-- **`LatexServiceImpl`** – Implements the LaTeX service for processing templates and compiling LaTeX files.  
+- **`LatexServiceImpl`** – Implements the LaTeX service for processing templates and compiling LaTeX files.
+- **`PersistenceService`** – DI, MongoDB(Docker)
 
 ### 🗂️ **Model (Data Layer)**
 Represents the application's core data structures.  
@@ -69,5 +70,6 @@ Ensure you have the following installed before running the application:
 
 ✅ **Java 17**  
 ✅ **Gradle**  
+✅ **Docker/MongoDB** 
 ✅ **JUnit**
 
