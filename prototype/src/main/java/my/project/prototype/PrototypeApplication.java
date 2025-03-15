@@ -1,12 +1,10 @@
 package my.project.prototype;
 
 import my.project.prototype.models.User;
-import my.project.prototype.controller.LatexGenerator;
-import my.project.prototype.models.LatexDocument;
+import my.project.prototype.controller.HomeController;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,6 +12,7 @@ import java.util.Scanner;
 public class PrototypeApplication implements CommandLineRunner {
 
     private User user;
+    private HomeController homecontroller = new HomeController();
 
     public static void main(String[] args) {
         SpringApplication.run(PrototypeApplication.class, args);
@@ -68,6 +67,15 @@ public class PrototypeApplication implements CommandLineRunner {
             scanner.close();
         }
     }
+    private void generateCV() {
+        try {
+            if (user != null) {
+            homecontroller.generateCV(user);
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to generate CV: " + e.getMessage());
+        }
+    }
 
     private void setUser(Scanner scanner) {
         user = new User();
@@ -106,26 +114,5 @@ public class PrototypeApplication implements CommandLineRunner {
         System.out.println("  generate-cv - Generate CV in LaTeX format");
         System.out.println("  help        - Show this help message");
         System.out.println("  exit        - Exit the shell");
-    }
-
-    private void generateCV() {
-        if (user == null) {
-            System.out.println("No user information available to generate CV.");
-            return;
-        }
-
-        LatexDocument document = new LatexDocument();
-        document.setName(user.getName());
-        document.setAddress(user.getAddress());
-        document.setPhone(user.getPhone());
-        document.setEmail(user.getEmail());
-        document.setPosition("Software Engineer");
-        document.setQuote("Make the change that you want to see in the world.");
-        document.setEducation(user.getEducation());
-        document.setSkills(user.getSkills());
-        document.setWorkExperiences(user.getWorkExperiences());
-
-        LatexGenerator generator = new LatexGenerator();
-        generator.generateCV();
     }
 }

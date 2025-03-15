@@ -71,15 +71,13 @@ public class WorkExperience {
         this.projects = projects;
     }
 
-    @Override
-    public String toString() {
-        return "WorkExperience{" +
-                "companyName='" + companyName + '\'' +
-                ", jobTitle='" + jobTitle + '\'' +
-                ", startDate='" + startDate + '\'' +
-                ", endDate='" + endDate + '\'' +
-                ", specialization='" + specialization + '\'' +
-                ", projects=" + projects +
-                '}';
+    public Object getLocation() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getLocation'");
+    }
+
+    public String[] getResponsibilities() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getResponsibilities'");
     }
 }

@@ -1,0 +1,84 @@
+%----------------------------------------------------------------------------------------
+%	SECTION TITLE
+%----------------------------------------------------------------------------------------
+
+\cvsection{Projekte}
+
+%----------------------------------------------------------------------------------------
+%	SECTION CONTENT
+%----------------------------------------------------------------------------------------
+
+\begin{cventries}
+    
+    %------------------------------------------------
+    
+    \cventry
+    {<institution1>} % Institution/Company
+    {<projectName1>} % Project Name
+    {<location1>} % Location
+    {<startDate1> - <endDate1>} % Date(s)
+    { % Description(s)
+        \begin{cvitems}
+            <projectItems1>
+        \end{cvitems}
+    }
+    \bigskip
+    
+    %------------------------------------------------
+    
+    \cventry
+    {<institution2>} % Institution/Company
+    {<projectName2>} % Project Name
+    {<location2>} % Location
+    {<startDate2> - <endDate2>} % Date(s)
+    { % Description(s)
+        \begin{cvitems}
+            <projectItems2>
+        \end{cvitems}
+    }
+    \bigskip
+    
+    %------------------------------------------------
+    
+    \cventry
+    {<institution3>} % Institution/Company
+    {<projectName3>} % Project Name
+    {<location3>} % Location
+    {<startDate3> - <endDate3>} % Date(s)
+    { % Description(s)
+        \begin{cvitems}
+            <projectItems3>
+        \end{cvitems}
+    }
+    \bigskip
+    
+    %------------------------------------------------
+    
+    \cventry
+    {<institution4>} % Institution/Company
+    {<projectName4>} % Project Name
+    {<location4>} % Location
+    {<startDate4> - <endDate4>} % Date(s)
+    { % Description(s)
+        \begin{cvitems}
+            <projectItems4>
+        \end{cvitems}
+    }
+    \bigskip
+    
+    %------------------------------------------------
+    
+    \cventry
+    {<institution5>} % Institution/Company
+    {<projectName5>} % Project Name
+    {<location5>} % Location
+    {<startDate5> - <endDate5>} % Date(s)
+    { % Description(s)
+        \begin{cvitems}
+            <projectItems5>
+        \end{cvitems}
+    }
+    
+    %------------------------------------------------
+    
+\end{cventries}

@@ -11,7 +11,7 @@ public interface LatexServiceInterface {
      * @param values Map of placeholder keys and their corresponding values.
      * @return A new LaTeX file with values replaced.
      */
-    File processTemplate(String templatePath, Map<String, String> values);
+    boolean processTemplate(String templatePath, Map<String, String> values);
 
     /**
      * Compiles a LaTeX file to a PDF.

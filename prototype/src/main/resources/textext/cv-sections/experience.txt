@@ -1,0 +1,39 @@
+%----------------------------------------------------------------------------------------
+%	SECTION TITLE
+%----------------------------------------------------------------------------------------
+\cvsection{Experience}
+
+%----------------------------------------------------------------------------------------
+%	SECTION CONTENT
+%----------------------------------------------------------------------------------------
+
+\begin{cventries}
+    
+    %------------------------------------------------
+    
+    \cventry
+    {<jobTitle1>} % Job title
+    {<companyName1>} % Organization
+    {<location1>} % Location
+    {<startDate1> - <endDate1>} % Date(s)
+    { % Description(s) of tasks/responsibilities
+        \begin{cvitems}
+            <experienceItems1>
+        \end{cvitems}
+    }
+    \bigskip
+    
+    %------------------------------------------------    
+    
+    \cventry
+    {<jobTitle2>} % Job title
+    {<companyName2>} % Organization
+    {<location2>} % Location
+    {<startDate2> - <endDate2>} % Date(s)
+    { % Description(s) of tasks/responsibilities
+        \begin{cvitems}
+            <experienceItems2>
+        \end{cvitems}
+    }
+    
+\end{cventries}
