@@ -19,14 +19,17 @@ public class LatexServiceImpl implements LatexServiceInterface {
 	public boolean processTemplate(String templatePath, Map<String, String> values) {
 
 		StringBuilder content = new StringBuilder();
-		String fileoutputpath = "C:\\ApplicationSpecialist\\ApplicationSpecialist\\src\\main\\resources\\textext\\main_finalized.txt";
+		String fileoutputpath = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\main_finalized.txt";
 		Pattern pattern = Pattern.compile("<(.*?)>");
-
+		System.out.println("matcher key5");
 		// Read file and replace <dummy> placeholders
 		try (BufferedReader reader = new BufferedReader(new FileReader(templatePath))) {
 			String line;
+			System.out.println("matcher key4");
 			while ((line = reader.readLine()) != null) {
+				System.out.println("matcher key2");
 				Matcher matcher = pattern.matcher(line);
+				System.out.println("matcher key1");
 				if (matcher.find()) {
 					String key = matcher.group(1);
 					if (!values.containsKey(key)) {
@@ -34,11 +37,13 @@ public class LatexServiceImpl implements LatexServiceInterface {
 						// map not complete yet
 						break;
 					}
+					System.out.println(key);
 					line = line.replace("<" + key + ">", values.get(key));
 				}
 				content.append(line).append("\n");
 			}
 		} catch (IOException e) {
+			System.out.println("latex service ioe");
 			return false;
 		}
 
@@ -47,6 +52,7 @@ public class LatexServiceImpl implements LatexServiceInterface {
 			writer.write(content.toString());
 			System.out.println("File updated successfully!");
 		} catch (IOException e) {
+			System.out.println("latex service ioe2");
 		}
 
 		return true;

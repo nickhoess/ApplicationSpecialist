@@ -46,19 +46,8 @@
 %	Comment any of the lines below if they are not required
 %----------------------------------------------------------------------------------------
 
-\name{wef}
-\address{D?rrenstr.34, 35463456 talhowe, ak-st}
-\mobile{hohohoh}
+\name{sf}
+\address{sf}
+\mobile{sf}
 
-\email{wef}
-%\homepage{www.posquit0.com}
-%\github{posquit0}
-%\linkedin{posquit0}
-%\skype{skypeid}
-%\stackoverflow{SOid}{SOname}
-%\twitter{@twit}
-%\linkedin{linkedin name}
-%\reddit{reddit account}
-%\xing{xing name}
-%\extrainfo{test} % Other text you want to include on this line
-
+\email{sf}
