@@ -2,62 +2,65 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout the Goods
+        uses: actions/checkout@v4
 
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: gradle  # Enables Gradle caching
+      - name: Fire Up Java 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle  
 
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v4
-      with:
-        cache-read-only: false  # Allows writing to cache
+      - name: Get Gradle Cookin’
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.0'
 
-    - name: Grant Execute Permission for Gradle Wrapper
-      run: chmod +x ./gradlew  # Fix execution issue
+      - name: Sniff Around - What’s Here?
+        run: ls -R  # Check what's in the joint
 
-    - name: Debug: Check Gradle Wrapper Exists
-      run: ls -la ./gradlew  # Ensure the file is present & executable
+      - name: Find That Sneaky `gradlew`
+        run: find . -name "gradlew" -print  # Make sure the bugger exists
 
-    - name: Build with Gradle Wrapper
-      run: ./gradlew build --no-daemon --scan
+      - name: Give `gradlew` Some Gumption
+        run: chmod +x $(find . -name "gradlew")  # Make sure it's got the legs to run
 
-    - name: Run Tests
-      run: ./gradlew test --no-daemon --scan
+      - name: Time to Build This Beast
+        run: ./gradlew build --no-daemon --scan  # Get ‘er done
+
+      - name: Make Sure It Ain’t Broke
+        run: ./gradlew test --no-daemon --scan  # Give it a spin, no dodgy business
 
   dependency-submission:
-
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      id-token: write  # Required for dependency submission
+      id-token: write  
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Grab the Repo
+        uses: actions/checkout@v4
 
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: gradle  # Enables Gradle caching
+      - name: Fire Up Java Again
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle  
 
-    - name: Generate and submit dependency graph
-      uses: gradle/actions/dependency-submission@v4
+      - name: Hand Over the Dependency Map
+        uses: gradle/actions/dependency-submission@v3
