@@ -10,18 +10,18 @@ import my.project.prototype.aview.CLI;
 @SpringBootApplication
 public class PrototypeApplication implements CommandLineRunner {
 
-    @Autowired
-    private CLI cli;
+	@Autowired
+	private CLI cli;
 
-    public static void main(String[] args) {
-        SpringApplication.run(PrototypeApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(PrototypeApplication.class, args);
+	}
 
-    @Override
-    public void run(String... args) throws Exception {
-        if (args.length > 0 && "no-shell".equals(args[0])) {
-            return;
-        }
-        cli.start();
-    }
+	@Override
+	public void run(String... args) throws Exception {
+		if (args.length > 0 && "no-shell".equals(args[0])) {
+			return;
+		}
+		cli.start();
+	}
 }

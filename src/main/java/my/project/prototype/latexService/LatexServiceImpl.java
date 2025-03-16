@@ -15,57 +15,57 @@ import org.springframework.stereotype.Service;
 @Service
 public class LatexServiceImpl implements LatexServiceInterface {
 
-    @Override
-    public boolean processTemplate(String templatePath, Map<String, String> values) {
-        
-        StringBuilder content = new StringBuilder();
-        String fileoutputpath = "C:\\ApplicationSpecialist\\ApplicationSpecialist\\src\\main\\resources\\textext\\main_finalized.txt";
-        Pattern pattern = Pattern.compile("<(.*?)>");
+	@Override
+	public boolean processTemplate(String templatePath, Map<String, String> values) {
 
-        // Read file and replace <dummy> placeholders
-        try (BufferedReader reader = new BufferedReader(new FileReader(templatePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                Matcher matcher = pattern.matcher(line);
-                if(matcher.find()) {
-                    String key = matcher.group(1);
-                    if (!values.containsKey(key)) {
-                        System.out.println("Key not found: " + key);
-                        //map not complete yet
-                        break;
-                    }
-                    line = line.replace("<" + key + ">", values.get(key));
-                }
-                content.append(line).append("\n");
-            }
-        } catch (IOException e) {
-            return false;
-        }
+		StringBuilder content = new StringBuilder();
+		String fileoutputpath = "C:\\ApplicationSpecialist\\ApplicationSpecialist\\src\\main\\resources\\textext\\main_finalized.txt";
+		Pattern pattern = Pattern.compile("<(.*?)>");
 
-        // Write updated content back to file
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileoutputpath))) {
-            writer.write(content.toString());
-            System.out.println("File updated successfully!");
-        } catch (IOException e) {
-        }
+		// Read file and replace <dummy> placeholders
+		try (BufferedReader reader = new BufferedReader(new FileReader(templatePath))) {
+			String line;
+			while ((line = reader.readLine()) != null) {
+				Matcher matcher = pattern.matcher(line);
+				if (matcher.find()) {
+					String key = matcher.group(1);
+					if (!values.containsKey(key)) {
+						System.out.println("Key not found: " + key);
+						// map not complete yet
+						break;
+					}
+					line = line.replace("<" + key + ">", values.get(key));
+				}
+				content.append(line).append("\n");
+			}
+		} catch (IOException e) {
+			return false;
+		}
 
-        return true;
-    }
+		// Write updated content back to file
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileoutputpath))) {
+			writer.write(content.toString());
+			System.out.println("File updated successfully!");
+		} catch (IOException e) {
+		}
 
-    @Override
-    public File compileLatex(File latexFile) {
-        try {
-            // Compile the LaTeX file to PDF using an external tool like pdflatex
-            ProcessBuilder processBuilder = new ProcessBuilder("pdflatex", latexFile.getAbsolutePath());
-            processBuilder.directory(latexFile.getParentFile());
-            Process process = processBuilder.start();
-            process.waitFor();
+		return true;
+	}
 
-            // Return the generated PDF file
-            String pdfFilePath = latexFile.getAbsolutePath().replace(".tex", ".pdf");
-            return new File(pdfFilePath);
-        } catch (IOException | InterruptedException e) {
-            throw new RuntimeException("Failed to compile LaTeX file", e);
-        }
-    }
+	@Override
+	public File compileLatex(File latexFile) {
+		try {
+			// Compile the LaTeX file to PDF using an external tool like pdflatex
+			ProcessBuilder processBuilder = new ProcessBuilder("pdflatex", latexFile.getAbsolutePath());
+			processBuilder.directory(latexFile.getParentFile());
+			Process process = processBuilder.start();
+			process.waitFor();
+
+			// Return the generated PDF file
+			String pdfFilePath = latexFile.getAbsolutePath().replace(".tex", ".pdf");
+			return new File(pdfFilePath);
+		} catch (IOException | InterruptedException e) {
+			throw new RuntimeException("Failed to compile LaTeX file", e);
+		}
+	}
 }

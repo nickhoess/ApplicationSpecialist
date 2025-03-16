@@ -45,6 +45,9 @@ jobs:
       - name: Make Sure It Ain’t Broke
         run: ./gradlew test --no-daemon --scan  # Give it a spin, no dodgy business
 
+      - name: Check Code Formatting with Spotless
+        run: ./gradlew spotlessCheck --no-daemon  # Ensure code formatting is correct
+
   dependency-submission:
     runs-on: ubuntu-latest
     permissions:
