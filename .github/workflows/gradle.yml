@@ -25,9 +25,15 @@ jobs:
         cache: gradle  # Enables Gradle caching
 
     - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+      uses: gradle/actions/setup-gradle@v4
       with:
         cache-read-only: false  # Allows writing to cache
+
+    - name: Grant Execute Permission for Gradle Wrapper
+      run: chmod +x ./gradlew  # Fix execution issue
+
+    - name: Debug: Check Gradle Wrapper Exists
+      run: ls -la ./gradlew  # Ensure the file is present & executable
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build --no-daemon --scan
@@ -54,4 +60,4 @@ jobs:
         cache: gradle  # Enables Gradle caching
 
     - name: Generate and submit dependency graph
-      uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+      uses: gradle/actions/dependency-submission@v4
