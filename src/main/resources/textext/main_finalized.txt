@@ -46,11 +46,11 @@
 %	Comment any of the lines below if they are not required
 %----------------------------------------------------------------------------------------
 
-\name{wefwf}
-\address{werwer}
-\mobile{werwer}
+\name{user}
+\address{user, 234 wef}
+\mobile{user234234234342}
 
-\email{werwer}
+\email{usermail}
 %\homepage{www.posquit0.com}
 %\github{posquit0}
 %\linkedin{posquit0}

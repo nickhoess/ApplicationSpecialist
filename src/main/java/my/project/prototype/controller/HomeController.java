@@ -41,7 +41,7 @@ public class HomeController {
 
 
         // Delegate the processing of the template and compilation to the LatexService
-        String templatePath = "C:\\ApplicationSpecialist\\prototype\\src\\main\\resources\\textext\\main.txt";
+        String templatePath = "C:\\ApplicationSpecialist\\ApplicationSpecialist\\src\\main\\resources\\textext\\main.txt";
         boolean templateIsProcessed = latexService.processTemplate(templatePath, values);
         if (templateIsProcessed) {
             System.out.println("Template processed successfully!");
