@@ -19,7 +19,7 @@ public class LatexServiceImpl implements LatexServiceInterface {
     public boolean processTemplate(String templatePath, Map<String, String> values) {
         
         StringBuilder content = new StringBuilder();
-        String fileoutputpath = "C:\\ApplicationSpecialist\\prototype\\src\\main\\resources\\textext\\main_finalized.txt";
+        String fileoutputpath = "C:\\ApplicationSpecialist\\ApplicationSpecialist\\src\\main\\resources\\textext\\main_finalized.txt";
         Pattern pattern = Pattern.compile("<(.*?)>");
 
         // Read file and replace <dummy> placeholders
