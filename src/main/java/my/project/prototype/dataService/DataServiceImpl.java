@@ -2,10 +2,12 @@ package my.project.prototype.dataService;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import my.project.prototype.models.SoftwareProject;
 import my.project.prototype.models.User;
 
 @Service
@@ -44,7 +46,22 @@ public class DataServiceImpl {
 			System.out.println("Address is null");
 		}
 
-		// Add more keys and values as needed
+		// Populate the map with values from the user's projects
+		List<SoftwareProject> projects = user.getProjects();
+		if (projects != null) {
+			for (int i = 0; i < projects.size(); i++) {
+				SoftwareProject project = projects.get(i);
+				int projectIndex = i + 1;
+				map.put("projectName" + projectIndex, project.getName());
+				map.put("institution" + projectIndex, project.getDescription());
+				map.put("location" + projectIndex, project.getVersion());
+				map.put("startDate" + projectIndex, project.getLanguages().toString());
+				map.put("endDate" + projectIndex, project.getTechnologies().toString());
+				map.put("projectItems" + projectIndex, String.join(", ", project.getInformationItems()));
+			}
+		} else {
+			System.out.println("Projects list is null");
+		}
 
 		System.out.println("Map: " + map.toString());
 
