@@ -10,6 +10,9 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class LatexServiceImpl implements LatexServiceInterface {
 
     @Override
@@ -36,7 +39,6 @@ public class LatexServiceImpl implements LatexServiceInterface {
                 content.append(line).append("\n");
             }
         } catch (IOException e) {
-            e.printStackTrace();
             return false;
         }
 
@@ -45,7 +47,6 @@ public class LatexServiceImpl implements LatexServiceInterface {
             writer.write(content.toString());
             System.out.println("File updated successfully!");
         } catch (IOException e) {
-            e.printStackTrace();
         }
 
         return true;
