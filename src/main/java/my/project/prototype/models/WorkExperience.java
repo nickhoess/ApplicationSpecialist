@@ -9,19 +9,23 @@ public class WorkExperience {
 	private String startDate;
 	private String endDate;
 	private String specialization;
+	private String location;
 	private List<SoftwareProject> projects;
+	private List<String> experienceItems; // Add this field
 
 	public WorkExperience() {
 	}
 
 	public WorkExperience(String companyName, String jobTitle, String startDate, String endDate, String specialization,
-			List<SoftwareProject> projects) {
+			String location, List<SoftwareProject> projects, List<String> experienceItems) {
 		this.companyName = companyName;
 		this.jobTitle = jobTitle;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.specialization = specialization;
+		this.location = location;
 		this.projects = projects;
+		this.experienceItems = experienceItems; // Initialize this field
 	}
 
 	public String getCompanyName() {
@@ -72,13 +76,19 @@ public class WorkExperience {
 		this.projects = projects;
 	}
 
-	public Object getLocation() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'getLocation'");
+	public String getLocation() {
+		return location;
 	}
 
-	public String[] getResponsibilities() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'getResponsibilities'");
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public List<String> getExperienceItems() {
+		return experienceItems;
+	}
+
+	public void setExperienceItems(List<String> experienceItems) {
+		this.experienceItems = experienceItems;
 	}
 }

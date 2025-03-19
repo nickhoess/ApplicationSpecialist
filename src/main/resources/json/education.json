@@ -1,0 +1,27 @@
+[
+    {
+        "degree": "B.Sc. Computer Science",
+        "institution": "Fake University",
+        "location": "Faketown, USA",
+        "startDate": "Sep. 2015",
+        "endDate": "Jun. 2019",
+        "educationItems": [
+            "Specialization: Software Engineering | Quality Assurance, Databases, Architecture, Development",
+            "Thesis: Runtime Analysis of Model-Based Algorithms | Fake Corporation",
+            "Internship (1 semester): Automated Vehicle Data Analysis | Fake Corporation",
+            "Team Project: Frontend Development for Fake Sailing Web Application"
+        ]
+    },
+    {
+        "degree": "Associate Degree in Mechatronics",
+        "institution": "Fake Technical Institute",
+        "location": "Faketown, USA",
+        "startDate": "Sep. 2012",
+        "endDate": "Jun. 2014",
+        "educationItems": [
+            "Problem Solving in Complex Systems",
+            "Analytical Thinking",
+            "Expertise in Automation Systems"
+        ]
+    }
+]

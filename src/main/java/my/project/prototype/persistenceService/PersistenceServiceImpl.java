@@ -16,7 +16,7 @@ public class PersistenceServiceImpl {
 	private MongoUserRepository mongoUserRepository;
 
 	public User saveData(User user) {
-		MongoUser mongoUser = new MongoUser();
+		MongoUser mongoUser = transformToMongoUser(user);
 		mongoUserRepository.save(mongoUser);
 		return user;
 	}
@@ -47,6 +47,10 @@ public class PersistenceServiceImpl {
 		mongoUser.setWorkExperiences(user.getWorkExperiences());
 		mongoUser.setEducation(user.getEducation());
 		mongoUser.setProjects(user.getProjects());
+		mongoUser.setSkillsJsonFilePath(user.getSkillsJsonFilePath());
+		mongoUser.setWorkExperiencesJsonFilePath(user.getWorkExperiencesJsonFilePath());
+		mongoUser.setEducationJsonFilePath(user.getEducationJsonFilePath());
+		mongoUser.setProjectsJsonFilePath(user.getProjectsJsonFilePath());
 		return mongoUser;
 	}
 
@@ -60,6 +64,10 @@ public class PersistenceServiceImpl {
 		user.setWorkExperiences(mongoUser.getWorkExperiences());
 		user.setEducation(mongoUser.getEducation());
 		user.setProjects(mongoUser.getProjects());
+		user.setSkillsJsonFilePath(mongoUser.getSkillsJsonFilePath());
+		user.setWorkExperiencesJsonFilePath(mongoUser.getWorkExperiencesJsonFilePath());
+		user.setEducationJsonFilePath(mongoUser.getEducationJsonFilePath());
+		user.setProjectsJsonFilePath(mongoUser.getProjectsJsonFilePath());
 		return user;
 	}
 }
