@@ -10,14 +10,22 @@ public class User {
 	private String address;
 	private List<String> skills;
 	private List<WorkExperience> workExperiences; // Changed to List<WorkExperience>
-	private List<String> education; // List of degrees or certifications
+	private List<Education> education; // List of degrees or certifications
 	private List<SoftwareProject> projects;
+
+	// New fields for JSON file paths
+	private String skillsJsonFilePath;
+	private String workExperiencesJsonFilePath;
+	private String educationJsonFilePath;
+	private String projectsJsonFilePath;
 
 	public User() {
 	}
 
 	public User(String name, String email, String phone, String address, List<String> skills,
-			List<WorkExperience> workExperiences, List<String> education, List<SoftwareProject> projects) {
+			List<WorkExperience> workExperiences, List<Education> education, List<SoftwareProject> projects,
+			String workExperiencesJsonFilePath, String skillsJsonFilePath, String educationJsonFilePath,
+			String projectsJsonFilePath) {
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
@@ -26,6 +34,42 @@ public class User {
 		this.workExperiences = workExperiences;
 		this.education = education;
 		this.projects = projects;
+		this.skillsJsonFilePath = skillsJsonFilePath;
+		this.workExperiencesJsonFilePath = workExperiencesJsonFilePath;
+		this.educationJsonFilePath = educationJsonFilePath;
+		this.projectsJsonFilePath = projectsJsonFilePath;
+	}
+
+	public String getSkillsJsonFilePath() {
+		return skillsJsonFilePath;
+	}
+
+	public void setSkillsJsonFilePath(String skillsJsonFilePath) {
+		this.skillsJsonFilePath = skillsJsonFilePath;
+	}
+
+	public String getWorkExperiencesJsonFilePath() {
+		return workExperiencesJsonFilePath;
+	}
+
+	public void setWorkExperiencesJsonFilePath(String workExperiencesJsonFilePath) {
+		this.workExperiencesJsonFilePath = workExperiencesJsonFilePath;
+	}
+
+	public String getEducationJsonFilePath() {
+		return educationJsonFilePath;
+	}
+
+	public void setEducationJsonFilePath(String educationJsonFilePath) {
+		this.educationJsonFilePath = educationJsonFilePath;
+	}
+
+	public String getProjectsJsonFilePath() {
+		return projectsJsonFilePath;
+	}
+
+	public void setProjectsJsonFilePath(String projectsJsonFilePath) {
+		this.projectsJsonFilePath = projectsJsonFilePath;
 	}
 
 	public String getName() {
@@ -76,11 +120,11 @@ public class User {
 		this.workExperiences = workExperiences;
 	}
 
-	public List<String> getEducation() {
+	public List<Education> getEducation() {
 		return education;
 	}
 
-	public void setEducation(List<String> education) {
+	public void setEducation(List<Education> education) {
 		this.education = education;
 	}
 
@@ -96,6 +140,9 @@ public class User {
 	public String toString() {
 		return "User{" + "name='" + name + '\'' + ", email='" + email + '\'' + ", phone='" + phone + '\''
 				+ ", address='" + address + '\'' + ", skills=" + skills + ", workExperiences=" + workExperiences
-				+ ", education=" + education + ", projects=" + projects + '}';
+				+ ", education=" + education + ", projects=" + projects + ", skillsJsonFilePath='" + skillsJsonFilePath
+				+ '\'' + ", workExperiencesJsonFilePath='" + workExperiencesJsonFilePath + '\''
+				+ ", educationJsonFilePath='" + educationJsonFilePath + '\'' + ", projectsJsonFilePath='"
+				+ projectsJsonFilePath + '\'' + '}';
 	}
 }

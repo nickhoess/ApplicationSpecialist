@@ -16,37 +16,33 @@ import org.springframework.stereotype.Service;
 public class LatexServiceImpl implements LatexServiceInterface {
 
 	@Override
-	public boolean processTemplate(String templatePath, Map<String, String> values) {
-
+	public boolean processTemplate(String templatePath, String fileOutPutPath, Map<String, String> values) {
 		StringBuilder content = new StringBuilder();
-		String fileoutputpath = "C:\\ApplicationSpecialist\\ApplicationSpecialist\\src\\main\\resources\\textext\\main_finalized.txt";
 		Pattern pattern = Pattern.compile("<(.*?)>");
 
-		// Read file and replace <dummy> placeholders
 		try (BufferedReader reader = new BufferedReader(new FileReader(templatePath))) {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				Matcher matcher = pattern.matcher(line);
-				if (matcher.find()) {
+				while (matcher.find()) {
 					String key = matcher.group(1);
-					if (!values.containsKey(key)) {
-						System.out.println("Key not found: " + key);
-						// map not complete yet
-						break;
+					if (values.containsKey(key)) {
+						line = line.replace("<" + key + ">", values.get(key));
 					}
-					line = line.replace("<" + key + ">", values.get(key));
 				}
 				content.append(line).append("\n");
 			}
 		} catch (IOException e) {
+			System.out.println("Error reading template: " + e.getMessage());
 			return false;
 		}
 
-		// Write updated content back to file
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileoutputpath))) {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileOutPutPath))) {
 			writer.write(content.toString());
 			System.out.println("File updated successfully!");
 		} catch (IOException e) {
+			System.out.println("Error writing to file: " + e.getMessage());
+			return false;
 		}
 
 		return true;
@@ -55,13 +51,11 @@ public class LatexServiceImpl implements LatexServiceInterface {
 	@Override
 	public File compileLatex(File latexFile) {
 		try {
-			// Compile the LaTeX file to PDF using an external tool like pdflatex
 			ProcessBuilder processBuilder = new ProcessBuilder("pdflatex", latexFile.getAbsolutePath());
 			processBuilder.directory(latexFile.getParentFile());
 			Process process = processBuilder.start();
 			process.waitFor();
 
-			// Return the generated PDF file
 			String pdfFilePath = latexFile.getAbsolutePath().replace(".tex", ".pdf");
 			return new File(pdfFilePath);
 		} catch (IOException | InterruptedException e) {

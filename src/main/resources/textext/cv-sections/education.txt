@@ -1,0 +1,40 @@
+%----------------------------------------------------------------------------------------
+%	SECTION TITLE
+%----------------------------------------------------------------------------------------
+
+\cvsection{Education}
+
+%----------------------------------------------------------------------------------------
+%	SECTION CONTENT
+%----------------------------------------------------------------------------------------
+
+\begin{cventries}
+
+%------------------------------------------------
+
+\cventry
+{<degree1>} % Degree
+{<institution1>} % Institution
+{<location1>} % Location
+{<startDate1> - <endDate1>} % Date(s)
+{ % Description(s) bullet points
+    \begin{cvitems}
+        <educationItems1>
+    \end{cvitems}
+}
+\bigskip
+
+%------------------------------------------------
+
+\cventry
+{<degree2>} % Degree
+{<institution2>} % Institution
+{<location2>} % Location
+{<startDate2> - <endDate2>} % Date(s)
+{ % Description(s) bullet points
+    \begin{cvitems}
+        <educationItems2>
+    \end{cvitems}
+}
+
+\end{cventries}

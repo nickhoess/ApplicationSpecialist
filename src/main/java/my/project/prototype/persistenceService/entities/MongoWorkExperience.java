@@ -78,7 +78,7 @@ public class MongoWorkExperience {
 
 	@Override
 	public String toString() {
-		return "WorkExperience{" + "id='" + id + '\'' + ", company='" + company + '\'' + ", position='" + position
+		return "MongoWorkExperience{" + "id='" + id + '\'' + ", company='" + company + '\'' + ", position='" + position
 				+ '\'' + ", startDate='" + startDate + '\'' + ", endDate='" + endDate + '\'' + ", description='"
 				+ description + '\'' + '}';
 	}

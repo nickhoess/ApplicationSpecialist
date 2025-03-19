@@ -51,16 +51,15 @@
 \mobile{<phone>}
 
 \email{<email>}
-%\homepage{www.posquit0.com}
-%\github{posquit0}
-%\linkedin{posquit0}
-%\skype{skypeid}
-%\stackoverflow{SOid}{SOname}
-%\twitter{@twit}
-%\linkedin{linkedin name}
-%\reddit{reddit account}
-%\xing{xing name}
-%\extrainfo{test} % Other text you want to include on this line
+%\homepage{<homepage>}
+%\github{<github>}
+%\linkedin{<linkedin>}
+%\skype{<skype>}
+%\stackoverflow{<stackoverflow_id>}{<stackoverflow_name>}
+%\twitter{<twitter>}
+%\reddit{<reddit>}
+%\xing{<xing>}
+%\extrainfo{<extrainfo>} % Other text you want to include on this line
 
 \position{<position>} % Your expertise/fields
 \quote{<quote>} % A quote or statement
