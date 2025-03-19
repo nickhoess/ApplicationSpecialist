@@ -1,0 +1,26 @@
+[
+    {
+        "jobTitle": "Software Engineer Intern",
+        "companyName": "Fake Tech Inc.",
+        "location": "Faketown, USA",
+        "startDate": "Jun. 2018",
+        "endDate": "Aug. 2018",
+        "experienceItems": [
+            "Developed automated tools for data analysis and evaluation (Python, Matlab)",
+            "Implemented algorithms for data analysis and processing of measurement data (Matlab)",
+            "Used CI/CD (Jenkins, Git)",
+            "Web-based data visualization (JavaScript, HTML/CSS)"
+        ]
+    },
+    {
+        "jobTitle": "Mechatronics Technician",
+        "companyName": "Fake Manufacturing Co.",
+        "location": "Faketown, USA",
+        "startDate": "Jul. 2014",
+        "endDate": "Aug. 2016",
+        "experienceItems": [
+            "Diagnosed and fixed issues in mechatronic systems",
+            "Integrated and maintained mechatronic systems"
+        ]
+    }
+]

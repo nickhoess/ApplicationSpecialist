@@ -7,26 +7,33 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import my.project.prototype.models.SoftwareProject;
 import my.project.prototype.models.WorkExperience;
+import my.project.prototype.models.Education;
 
 @Document(collection = "users")
 public class MongoUser {
 
 	@Id
-	private String id; // Generic ID, can be used across different persistence strategies
+	private String id;
 	private String name;
 	private String email;
 	private String phone;
 	private String address;
 	private List<String> skills;
-	private List<WorkExperience> workExperiences; // List of work experiences
-	private List<String> education; // List of degrees or certifications
+	private List<WorkExperience> workExperiences;
+	private List<Education> education;
 	private List<SoftwareProject> projects;
+	private String skillsJsonFilePath;
+	private String workExperiencesJsonFilePath;
+	private String educationJsonFilePath;
+	private String projectsJsonFilePath;
 
 	public MongoUser() {
 	}
 
 	public MongoUser(String id, String name, String email, String phone, String address, List<String> skills,
-			List<WorkExperience> workExperiences, List<String> education, List<SoftwareProject> projects) {
+			List<WorkExperience> workExperiences, List<Education> education, List<SoftwareProject> projects,
+			String skillsJsonFilePath, String workExperiencesJsonFilePath, String educationJsonFilePath,
+			String projectsJsonFilePath) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -36,6 +43,10 @@ public class MongoUser {
 		this.workExperiences = workExperiences;
 		this.education = education;
 		this.projects = projects;
+		this.skillsJsonFilePath = skillsJsonFilePath;
+		this.workExperiencesJsonFilePath = workExperiencesJsonFilePath;
+		this.educationJsonFilePath = educationJsonFilePath;
+		this.projectsJsonFilePath = projectsJsonFilePath;
 	}
 
 	// Getters and Setters
@@ -95,11 +106,11 @@ public class MongoUser {
 		this.workExperiences = workExperiences;
 	}
 
-	public List<String> getEducation() {
+	public List<Education> getEducation() {
 		return education;
 	}
 
-	public void setEducation(List<String> education) {
+	public void setEducation(List<Education> education) {
 		this.education = education;
 	}
 
@@ -111,10 +122,45 @@ public class MongoUser {
 		this.projects = projects;
 	}
 
+	public String getSkillsJsonFilePath() {
+		return skillsJsonFilePath;
+	}
+
+	public void setSkillsJsonFilePath(String skillsJsonFilePath) {
+		this.skillsJsonFilePath = skillsJsonFilePath;
+	}
+
+	public String getWorkExperiencesJsonFilePath() {
+		return workExperiencesJsonFilePath;
+	}
+
+	public void setWorkExperiencesJsonFilePath(String workExperiencesJsonFilePath) {
+		this.workExperiencesJsonFilePath = workExperiencesJsonFilePath;
+	}
+
+	public String getEducationJsonFilePath() {
+		return educationJsonFilePath;
+	}
+
+	public void setEducationJsonFilePath(String educationJsonFilePath) {
+		this.educationJsonFilePath = educationJsonFilePath;
+	}
+
+	public String getProjectsJsonFilePath() {
+		return projectsJsonFilePath;
+	}
+
+	public void setProjectsJsonFilePath(String projectsJsonFilePath) {
+		this.projectsJsonFilePath = projectsJsonFilePath;
+	}
+
 	@Override
 	public String toString() {
-		return "User{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", email='" + email + '\'' + ", phone='"
+		return "MongoUser{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", email='" + email + '\'' + ", phone='"
 				+ phone + '\'' + ", address='" + address + '\'' + ", skills=" + skills + ", workExperiences="
-				+ workExperiences + ", education=" + education + ", projects=" + projects + '}';
+				+ workExperiences + ", education=" + education + ", projects=" + projects + ", skillsJsonFilePath='"
+				+ skillsJsonFilePath + '\'' + ", workExperiencesJsonFilePath='" + workExperiencesJsonFilePath + '\''
+				+ ", educationJsonFilePath='" + educationJsonFilePath + '\'' + ", projectsJsonFilePath='"
+				+ projectsJsonFilePath + '\'' + '}';
 	}
 }

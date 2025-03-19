@@ -16,10 +16,10 @@ import org.springframework.stereotype.Service;
 public class LatexServiceImpl implements LatexServiceInterface {
 
 	@Override
-	public boolean processTemplate(String templatePath, Map<String, String> values) {
+	public boolean processTemplate(String templatePath, String fileOutPutPath, Map<String, String> values) {
 
 		StringBuilder content = new StringBuilder();
-		String fileoutputpath = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\main_finalized.txt";
+		String fileoutputpath = fileOutPutPath;
 		Pattern pattern = Pattern.compile("<(.*?)>");
 		System.out.println("matcher key5");
 		// Read file and replace <dummy> placeholders
@@ -34,8 +34,7 @@ public class LatexServiceImpl implements LatexServiceInterface {
 					String key = matcher.group(1);
 					if (!values.containsKey(key)) {
 						System.out.println("Key not found: " + key);
-						// map not complete yet
-						break;
+						continue;
 					}
 					System.out.println(key);
 					line = line.replace("<" + key + ">", values.get(key));

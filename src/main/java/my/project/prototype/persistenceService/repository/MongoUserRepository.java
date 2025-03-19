@@ -1,4 +1,3 @@
-// filepath: c:\ApplicationSpecialist\prototype\src\main\java\my\project\prototype\repository\MongoUserRepository.java
 package my.project.prototype.persistenceService.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
