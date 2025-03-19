@@ -6,14 +6,11 @@ import my.project.prototype.models.WorkExperience;
 import my.project.prototype.models.Education;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Service
 public class DataServiceImpl {
@@ -105,25 +102,5 @@ public class DataServiceImpl {
 
 		System.out.println("Education Map: " + map.toString());
 		return map;
-	}
-
-	public Map<String, String> collectKeys(String templatePath) {
-		Map<String, String> keys = new HashMap<>();
-		Pattern pattern = Pattern.compile("<(.*?)>");
-
-		try (BufferedReader reader = new BufferedReader(new FileReader(templatePath))) {
-			String line;
-			while ((line = reader.readLine()) != null) {
-				Matcher matcher = pattern.matcher(line);
-				while (matcher.find()) {
-					String key = matcher.group(1);
-					keys.put(key, ""); // Initialize with empty value
-				}
-			}
-		} catch (IOException e) {
-			System.out.println("Error reading template: " + e.getMessage());
-		}
-
-		return keys;
 	}
 }
