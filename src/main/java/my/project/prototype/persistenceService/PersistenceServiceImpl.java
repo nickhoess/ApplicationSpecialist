@@ -10,23 +10,26 @@ import my.project.prototype.persistenceService.entities.MongoUser;
 import my.project.prototype.persistenceService.repository.MongoUserRepository;
 
 @Service
-public class PersistenceServiceImpl {
+public class PersistenceServiceImpl implements PersistenceServiceInterface {
 
 	@Autowired
 	private MongoUserRepository mongoUserRepository;
 
+	@Override
 	public User saveData(User user) {
 		MongoUser mongoUser = transformToMongoUser(user);
 		mongoUserRepository.save(mongoUser);
 		return user;
 	}
 
+	@Override
 	public boolean saveUser(User user) {
 		MongoUser mongoUser = transformToMongoUser(user);
 		mongoUserRepository.save(mongoUser);
 		return true;
 	}
 
+	@Override
 	public User getUserbyID(String id) {
 		Optional<MongoUser> optionalMongoUser = mongoUserRepository.findById(id);
 		if (optionalMongoUser.isPresent()) {
