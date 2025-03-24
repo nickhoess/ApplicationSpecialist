@@ -6,14 +6,14 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import my.project.prototype.controller.HomeController;
+import my.project.prototype.homeService.HomeServiceInterface;
 import my.project.prototype.models.User;
 
 @Component
 public class CLI {
 
 	@Autowired
-	private HomeController homecontroller;
+	private HomeServiceInterface homeservice;
 
 	private User user;
 
@@ -56,7 +56,7 @@ public class CLI {
 	private void generateCV() {
 		try {
 			if (user != null) {
-				homecontroller.generateCV(user);
+				homeservice.generateCV(user);
 			}
 		} catch (IOException e) {
 			System.out.println("Failed to generate CV: " + e.getMessage());

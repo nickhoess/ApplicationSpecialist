@@ -1,31 +1,31 @@
-package my.project.prototype.controller;
+package my.project.prototype.homeService;
 
 import java.io.IOException;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
-import my.project.prototype.dataService.DataServiceImpl;
+import my.project.prototype.dataService.DataServiceInterface;
 import my.project.prototype.latexService.LatexServiceInterface;
 import my.project.prototype.models.User;
-import my.project.prototype.persistenceService.PersistenceServiceImpl;
+import my.project.prototype.persistenceService.PersistenceServiceInterface;
 
-@Controller
-public class HomeController {
+@Service
+public class HomeServiceImpl implements HomeServiceInterface {
 
 	@Autowired
-	private PersistenceServiceImpl persistenceService;
+	private PersistenceServiceInterface persistenceService;
 	@Autowired
-	private DataServiceImpl dataService;
+	private DataServiceInterface dataService;
 	@Autowired
 	private LatexServiceInterface latexService;
 
+	@Override
 	public void generateCV(User user) throws IOException {
 		loadUserData(user);
 		if (!saveUserToDatabase(user)) {
-			System.out.println("Can't save user, check persistence service");
-			return;
+			throw new IOException("Can't save user, check persistence service");
 		}
 
 		processTemplates(user);

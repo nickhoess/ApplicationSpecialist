@@ -1,32 +1,37 @@
 package my.project.prototype.dataService;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import my.project.prototype.models.User;
-import my.project.prototype.models.WorkExperience;
-import my.project.prototype.models.Education;
-import org.springframework.stereotype.Service;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import my.project.prototype.models.Education;
+import my.project.prototype.models.User;
+import my.project.prototype.models.WorkExperience;
+
 @Service
-public class DataServiceImpl {
+public class DataServiceImpl implements DataServiceInterface {
 
 	private final ObjectMapper objectMapper = new ObjectMapper();
 
+	@Override
 	public List<WorkExperience> readExperienceJsonData(String filePath) throws IOException {
 		return objectMapper.readValue(new FileReader(filePath),
 				objectMapper.getTypeFactory().constructCollectionType(List.class, WorkExperience.class));
 	}
 
+	@Override
 	public List<Education> readEducationJsonData(String filePath) throws IOException {
 		return objectMapper.readValue(new FileReader(filePath),
 				objectMapper.getTypeFactory().constructCollectionType(List.class, Education.class));
 	}
 
+	@Override
 	public Map<String, String> buildMapper(User user) throws IOException {
 		Map<String, String> map = new HashMap<>();
 
@@ -66,6 +71,7 @@ public class DataServiceImpl {
 		return map;
 	}
 
+	@Override
 	public Map<String, String> buildExperienceMapper(User user) throws IOException {
 		Map<String, String> map = new HashMap<>();
 
@@ -85,6 +91,7 @@ public class DataServiceImpl {
 		return map;
 	}
 
+	@Override
 	public Map<String, String> buildEducationMapper(User user) throws IOException {
 		Map<String, String> map = new HashMap<>();
 
