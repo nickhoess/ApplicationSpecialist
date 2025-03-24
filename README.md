@@ -10,8 +10,6 @@ This is a **prototype application** built with **Spring Boot**. It features both
 
 ---
 
-## 📁 Project Structure
-
 ### 💻 Usage
 
 #### Command Line Interface
