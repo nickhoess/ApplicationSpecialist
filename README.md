@@ -1,5 +1,7 @@
 # 🛠️ Prototype Application
 
+[![codecov](https://codecov.io/gh/nickhoess/ApplicationSpecialist/branch/main/graph/badge.svg?token=VfZ6wmCXIy)](https://codecov.io/gh/nickhoess/ApplicationSpecialist)
+
 ![Project Logo](tas-picture.png)
 
 ## 🚧 Project Status: In Development 🚧
