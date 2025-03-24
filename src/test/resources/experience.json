@@ -1,0 +1,11 @@
+[
+    {
+      "companyName": "Example Corp",
+      "jobTitle": "Software Engineer",
+      "startDate": "2020-01-01",
+      "endDate": "2023-01-01",
+      "specialization": "Software Development",
+      "location": "New York, NY",
+      "experienceItems": ["Developed a web application", "Led a team of 5 developers"]
+    }
+  ]

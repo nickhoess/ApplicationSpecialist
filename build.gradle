@@ -5,6 +5,7 @@ plugins {
     id 'com.diffplug.spotless' version '6.0.0' // Add Spotless plugin
     id 'com.github.ben-manes.versions' version '0.47.0' // Add Versions plugin
     id 'org.owasp.dependencycheck' version '8.0.0' // Add Dependency Check plugin
+    id 'jacoco' // Add JaCoCo plugin
 }
 
 group = 'my.project'
@@ -39,6 +40,7 @@ configurations.all {
 
 tasks.named('test') {
     useJUnitPlatform()
+    finalizedBy 'jacocoTestReport' // Generate report after tests run
 }
 
 // Configure Spotless
