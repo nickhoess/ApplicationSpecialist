@@ -31,7 +31,8 @@ public class HomeRestController {
 			homeService.generateCV(user);
 			return ResponseEntity.ok("CV generated successfully!");
 		} catch (IOException e) {
-			return ResponseEntity.status(500).body("Error generating CV: " + e.getMessage());
+			logger.error("Error generating CV", e);
+			return ResponseEntity.status(500).body("Error generating CV. Please try again later.");
 		}
 	}
 }
