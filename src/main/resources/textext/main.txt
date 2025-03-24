@@ -76,9 +76,9 @@
 %	CV/RESUME CONTENT
 %	Each section is imported separately, open each file in turn to modify content
 %----------------------------------------------------------------------------------------
-%\input{experience_finalized.tex}
-%\input{education_finalized.tex}
-%\input{techstack.tex}
+\input{workexperience_finalized.tex}
+\input{education_finalized.tex}
+\input{technicalSkills_finalized.tex}
 %\newpage
 %\input{cv-sections/softskills.tex}
 %\input{projects_finalized.tex}

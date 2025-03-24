@@ -8,7 +8,19 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import my.project.prototype.models.TechSkill;
+
 public interface DataServiceInterface {
+	/**
+	 * Reads work experience data from a JSON file.
+	 * 
+	 * @param filePath
+	 *            Path to the JSON file.
+	 * @return List of WorkExperience objects.
+	 * @throws IOException
+	 *             If an I/O error occurs.
+	 */
+	public List<TechSkill> readTechnicalSkillsJsonData(String filePath) throws IOException;
 
 	/**
 	 * Reads work experience data from a JSON file.
@@ -64,4 +76,16 @@ public interface DataServiceInterface {
 	 *             If an I/O error occurs.
 	 */
 	Map<String, String> buildEducationMapper(User user) throws IOException;
+
+	/**
+	 * Builds a map of user education details.
+	 * 
+	 * @param user
+	 *            The User object.
+	 * @return Map of user education details.
+	 * @throws IOException
+	 *             If an I/O error occurs.
+	 */
+
+	public Map<String, String> buildTechnicalSkillsMapper(User user) throws IOException;
 }

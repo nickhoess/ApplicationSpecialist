@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import my.project.prototype.models.SoftwareProject;
+import my.project.prototype.models.TechSkill;
 import my.project.prototype.models.WorkExperience;
 import my.project.prototype.models.Education;
 
@@ -18,7 +19,7 @@ public class MongoUser {
 	private String email;
 	private String phone;
 	private String address;
-	private List<String> skills;
+	private List<TechSkill> skills;
 	private List<WorkExperience> workExperiences;
 	private List<Education> education;
 	private List<SoftwareProject> projects;
@@ -30,7 +31,7 @@ public class MongoUser {
 	public MongoUser() {
 	}
 
-	public MongoUser(String id, String name, String email, String phone, String address, List<String> skills,
+	public MongoUser(String id, String name, String email, String phone, String address, List<TechSkill> skills,
 			List<WorkExperience> workExperiences, List<Education> education, List<SoftwareProject> projects,
 			String skillsJsonFilePath, String workExperiencesJsonFilePath, String educationJsonFilePath,
 			String projectsJsonFilePath) {
@@ -90,11 +91,11 @@ public class MongoUser {
 		this.address = address;
 	}
 
-	public List<String> getSkills() {
+	public List<TechSkill> getSkills() {
 		return skills;
 	}
 
-	public void setSkills(List<String> skills) {
+	public void setSkills(List<TechSkill> skills) {
 		this.skills = skills;
 	}
 
