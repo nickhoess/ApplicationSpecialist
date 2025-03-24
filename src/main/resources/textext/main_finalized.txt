@@ -46,8 +46,46 @@
 %	Comment any of the lines below if they are not required
 %----------------------------------------------------------------------------------------
 
-\name{sf}
-\address{sf}
-\mobile{sf}
+\name{p}
+\address{p}
+\mobile{p}
 
-\email{sf}
+\email{p}
+%\homepage{<homepage>}
+%\github{<github>}
+%\linkedin{<linkedin>}
+%\skype{<skype>}
+%\stackoverflow{<stackoverflow_id>}{<stackoverflow_name>}
+%\twitter{<twitter>}
+%\reddit{<reddit>}
+%\xing{<xing>}
+%\extrainfo{<extrainfo>} % Other text you want to include on this line
+
+\position{<position>} % Your expertise/fields
+\quote{<quote>} % A quote or statement
+
+\makecvfooter{\today}{p~~~·~~~Résumé}{\thepage} % Specify the letter footer with 3 arguments: (<left>, <center>, <right>), leave any of these blank if they are not needed
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\makecvheader % Print the header
+
+%----------------------------------------------------------------------------------------
+%	CV/RESUME CONTENT
+%	Each section is imported separately, open each file in turn to modify content
+%----------------------------------------------------------------------------------------
+\input{cv-sections/experience.tex}
+\input{cv-sections/education.tex}
+\input{cv-sections/techstack.tex}
+\newpage
+\input{cv-sections/softskills.tex}
+\input{cv-sections/projects.tex}
+%\input{cv-sections/presentation.tex}
+%\input{cv-sections/writing.tex}
+%\input{cv-sections/committees.tex}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

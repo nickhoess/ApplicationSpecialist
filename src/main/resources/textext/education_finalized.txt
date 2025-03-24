@@ -1,0 +1,45 @@
+%----------------------------------------------------------------------------------------
+%	SECTION TITLE
+%----------------------------------------------------------------------------------------
+
+\cvsection{Education}
+
+%----------------------------------------------------------------------------------------
+%	SECTION CONTENT
+%----------------------------------------------------------------------------------------
+
+\begin{cventries}
+
+%------------------------------------------------
+
+\cventry
+{B.Sc. Computer Science} % Degree
+{Fake University} % Institution
+{Faketown, USA} % Location
+{Sep. 2015 - Jun. 2019} % Date(s)
+{ % Description(s) bullet points
+    \begin{cvitems}
+        Specialization: Software Engineering | Quality Assurance, Databases, Architecture, Development
+Thesis: Runtime Analysis of Model-Based Algorithms | Fake Corporation
+Internship (1 semester): Automated Vehicle Data Analysis | Fake Corporation
+Team Project: Frontend Development for Fake Sailing Web Application
+    \end{cvitems}
+}
+\bigskip
+
+%------------------------------------------------
+
+\cventry
+{Associate Degree in Mechatronics} % Degree
+{Fake Technical Institute} % Institution
+{Faketown, USA} % Location
+{Sep. 2012 - Jun. 2014} % Date(s)
+{ % Description(s) bullet points
+    \begin{cvitems}
+        Problem Solving in Complex Systems
+Analytical Thinking
+Expertise in Automation Systems
+    \end{cvitems}
+}
+
+\end{cventries}

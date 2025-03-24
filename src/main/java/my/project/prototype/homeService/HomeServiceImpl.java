@@ -48,7 +48,7 @@ public class HomeServiceImpl implements HomeServiceInterface {
 		String templatePathMain = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\main.txt";
 		String targetMain = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\main_finalized.txt";
 		String targetEducation = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\education_finalized.txt";
-		String targetExperience = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\worksexperience_finalized.txt";
+		String targetExperience = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\workexperience_finalized.txt";
 
 		Map<String, String> userInfo = dataService.buildMapper(user);
 		Map<String, String> experienceInfo = dataService.buildExperienceMapper(user);
@@ -59,6 +59,10 @@ public class HomeServiceImpl implements HomeServiceInterface {
 				experienceInfo);
 		boolean isEducationProcessed = latexService.processTemplate(templatePathEducation, targetEducation,
 				educationInfo);
+		if (!targetMain.endsWith(".tex")) {
+			targetMain = targetMain.replaceAll("\\.\\w+$", "") + ".tex";
+		}
+		latexService.compileLatex(new java.io.File(targetMain));
 
 		logTemplateProcessingResults(isMainProcessed, isExperienceProcessed, isEducationProcessed);
 	}

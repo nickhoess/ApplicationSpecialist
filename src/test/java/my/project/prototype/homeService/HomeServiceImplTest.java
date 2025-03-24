@@ -32,7 +32,6 @@ public class HomeServiceImplTest {
 	private HomeServiceImpl homeService;
 
 	@BeforeEach
-	@SuppressWarnings("unused")
 	void setUp() {
 		MockitoAnnotations.openMocks(this);
 	}
@@ -60,7 +59,7 @@ public class HomeServiceImplTest {
 						.thenReturn(true);
 		when(latexService.processTemplate(
 				"C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\cv-sections\\experience.txt",
-				"C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\worksexperience_finalized.txt",
+				"C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\workexperience_finalized.txt",
 				new HashMap<>())).thenReturn(true);
 		when(latexService.processTemplate(
 				"C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\cv-sections\\education.txt",
@@ -82,7 +81,7 @@ public class HomeServiceImplTest {
 				"C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\main_finalized.txt", new HashMap<>());
 		verify(latexService, times(1)).processTemplate(
 				"C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\cv-sections\\experience.txt",
-				"C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\worksexperience_finalized.txt",
+				"C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\workexperience_finalized.txt",
 				new HashMap<>());
 		verify(latexService, times(1)).processTemplate(
 				"C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\cv-sections\\education.txt",
