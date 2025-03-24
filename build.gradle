@@ -2,10 +2,10 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.4.3'
     id 'io.spring.dependency-management' version '1.1.7'
-    id 'com.diffplug.spotless' version '6.0.0' // Add Spotless plugin
-    id 'com.github.ben-manes.versions' version '0.47.0' // Add Versions plugin
-    id 'org.owasp.dependencycheck' version '8.0.0' // Add Dependency Check plugin
-    id 'jacoco' // Add JaCoCo plugin
+    id 'com.diffplug.spotless' version '6.0.0'
+    id 'com.github.ben-manes.versions' version '0.47.0'
+    id 'org.owasp.dependencycheck' version '8.0.0'
+    id 'jacoco'
 }
 
 group = 'my.project'
@@ -13,7 +13,7 @@ version = '0.0.1-SNAPSHOT'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17) // Keep Java 17
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
@@ -27,7 +27,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.mongodb:mongodb-driver-sync:5.2.1'
     implementation 'org.eclipse.jgit:org.eclipse.jgit:5.13.3.202401111512-r'
+
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
@@ -38,23 +40,40 @@ configurations.all {
     }
 }
 
+// Use JUnit Platform (JUnit 5) for testing
 tasks.named('test') {
     useJUnitPlatform()
-    finalizedBy 'jacocoTestReport' // Generate report after tests run
+    finalizedBy 'jacocoTestReport'
 }
 
-// Configure Spotless
-spotless {
-    java {
-        eclipse().configFile() // Use default Eclipse formatter
+// Jacoco code coverage config for GitHub CI (Codecov needs XML output)
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true  // Needed by codecov-action
+        html.required = true // Optional, for viewing locally
+        csv.required = false
     }
 }
 
-// Configure Dependency Check
+// Spotless code formatting check (CI uses this in formatting job)
+spotless {
+    java {
+        eclipse() // Uses default Eclipse formatting rules
+        // Optional: Use googleJavaFormat() instead if you prefer
+    }
+}
+
+// OWASP Dependency Check (optional, for future CI job)
 dependencyCheck {
     failBuildOnCVSS = 7
-    suppressionFile = 'dependency-check-suppressions.xml'
+    suppressionFile = 'dependency-check-suppressions.xml' // Optional
     analyzers {
         assemblyEnabled = false
     }
+}
+
+// Optional named task to simplify OWASP scans
+tasks.register("securityScan") {
+    dependsOn "dependencyCheckAnalyze"
 }
