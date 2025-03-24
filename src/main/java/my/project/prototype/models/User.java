@@ -1,6 +1,9 @@
 package my.project.prototype.models;
 
+import java.io.IOException;
 import java.util.List;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class User {
 
@@ -144,5 +147,10 @@ public class User {
 				+ '\'' + ", workExperiencesJsonFilePath='" + workExperiencesJsonFilePath + '\''
 				+ ", educationJsonFilePath='" + educationJsonFilePath + '\'' + ", projectsJsonFilePath='"
 				+ projectsJsonFilePath + '\'' + '}';
+	}
+
+	public static User fromJson(String json) throws IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		return objectMapper.readValue(json, User.class);
 	}
 }

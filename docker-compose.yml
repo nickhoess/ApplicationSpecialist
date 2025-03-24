@@ -10,5 +10,15 @@ services:
     volumes:
       - mongo-data:/data/db
 
+  spring-boot-app:
+    build: .
+    container_name: spring-boot-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://my-mongodb:27017/your_db
+
 volumes:
   mongo-data:
