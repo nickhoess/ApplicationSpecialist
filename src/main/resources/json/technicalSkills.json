@@ -1,0 +1,34 @@
+[
+  {
+    "category": "Programming Languages",
+    "skills": ["Java", "Python", "C", "Scala", "JavaScript", "TypeScript", "Dart"]
+  },
+  {
+    "category": "Web & App Development",
+    "skills": ["Vue (ts,js)", "Flutter (Dart)", "CSS", "HTML", "REST APIs"]
+  },
+  {
+    "category": "Build Tools & Frameworks",
+    "skills": ["Gradle", "Maven", "sbt", "Spring Boot"]
+  },
+  {
+    "category": "Testing & Quality Assurance",
+    "skills": ["Cypress", "Gatling", "JUnit", "Mockito", "Playwright", "ScalaTest", "Selenium", "Vitest"]
+  },
+  {
+    "category": "DevOps & CI/CD",
+    "skills": ["Docker", "GitHub Actions", "GitLab CI/CD", "Jenkins"]
+  },
+  {
+    "category": "Databases",
+    "skills": ["MongoDB", "Oracle SQL"]
+  },
+  {
+    "category": "Version Control",
+    "skills": ["Git", "SVN"]
+  },
+  {
+    "category": "Software Design & Architecture",
+    "skills": ["Architectural Patterns", "Design Patterns", "UML", "Software & IT Security Principles"]
+  }
+]

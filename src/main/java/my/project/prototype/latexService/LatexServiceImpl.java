@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,6 +38,10 @@ public class LatexServiceImpl implements LatexServiceInterface {
 			return false;
 		}
 
+		if (!fileOutPutPath.endsWith(".tex")) {
+			fileOutPutPath = fileOutPutPath.replaceAll("\\.\\w+$", "") + ".tex";
+		}
+
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileOutPutPath))) {
 			writer.write(content.toString());
 			System.out.println("File updated successfully!");
@@ -51,14 +56,45 @@ public class LatexServiceImpl implements LatexServiceInterface {
 	@Override
 	public File compileLatex(File latexFile) {
 		try {
-			ProcessBuilder processBuilder = new ProcessBuilder("pdflatex", latexFile.getAbsolutePath());
+			System.out.println("Starting LaTeX compilation for file: " + latexFile.getAbsolutePath());
+
+			// Use xelatex instead of pdflatex
+			ProcessBuilder processBuilder = new ProcessBuilder("xelatex", latexFile.getAbsolutePath());
 			processBuilder.directory(latexFile.getParentFile());
+			processBuilder.redirectErrorStream(true); // Combine stdout and stderr
 			Process process = processBuilder.start();
-			process.waitFor();
+
+			// Capture and log the output of the process
+			try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+				String line;
+				while ((line = reader.readLine()) != null) {
+					System.out.println(line);
+				}
+			}
+
+			System.out.println("LaTeX compilation process started, waiting for it to complete...");
+			int exitCode = process.waitFor();
+			System.out.println("LaTeX compilation process completed with exit code: " + exitCode);
+
+			if (exitCode != 0) {
+				System.out.println("LaTeX compilation failed with exit code: " + exitCode);
+			}
 
 			String pdfFilePath = latexFile.getAbsolutePath().replace(".tex", ".pdf");
-			return new File(pdfFilePath);
-		} catch (IOException | InterruptedException e) {
+			File pdfFile = new File(pdfFilePath);
+
+			if (pdfFile.exists()) {
+				System.out.println("PDF generated successfully: " + pdfFilePath);
+			} else {
+				System.out.println("PDF generation failed.");
+			}
+
+			return pdfFile;
+		} catch (IOException e) {
+			System.out.println("IOException occurred during LaTeX compilation: " + e.getMessage());
+			throw new RuntimeException("Failed to compile LaTeX file", e);
+		} catch (InterruptedException e) {
+			System.out.println("InterruptedException occurred during LaTeX compilation: " + e.getMessage());
 			throw new RuntimeException("Failed to compile LaTeX file", e);
 		}
 	}

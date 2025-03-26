@@ -36,6 +36,8 @@ public class HomeServiceImpl implements HomeServiceInterface {
 				.readEducationJsonData("C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\json\\education.json"));
 		user.setWorkExperiences(dataService
 				.readExperienceJsonData("C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\json\\experience.json"));
+		user.setSkills(dataService.readTechnicalSkillsJsonData(
+				"C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\json\\technicalSkills.json"));
 	}
 
 	private boolean saveUserToDatabase(User user) {
@@ -43,29 +45,39 @@ public class HomeServiceImpl implements HomeServiceInterface {
 	}
 
 	private void processTemplates(User user) throws IOException {
+		String templateTechSkill = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\cv-sections\\technicalSkills.txt";
 		String templatePathExperience = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\cv-sections\\experience.txt";
 		String templatePathEducation = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\cv-sections\\education.txt";
 		String templatePathMain = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\main.txt";
 		String targetMain = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\main_finalized.txt";
 		String targetEducation = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\education_finalized.txt";
-		String targetExperience = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\worksexperience_finalized.txt";
+		String targetExperience = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\workexperience_finalized.txt";
+		String targetTechSkill = "C:\\vsc\\ApplicationSpecialist\\src\\main\\resources\\textext\\technicalSkills_finalized.txt";
 
 		Map<String, String> userInfo = dataService.buildMapper(user);
 		Map<String, String> experienceInfo = dataService.buildExperienceMapper(user);
 		Map<String, String> educationInfo = dataService.buildEducationMapper(user);
+		Map<String, String> techSkillInfo = dataService.buildTechnicalSkillsMapper(user);
 
 		boolean isMainProcessed = latexService.processTemplate(templatePathMain, targetMain, userInfo);
 		boolean isExperienceProcessed = latexService.processTemplate(templatePathExperience, targetExperience,
 				experienceInfo);
 		boolean isEducationProcessed = latexService.processTemplate(templatePathEducation, targetEducation,
 				educationInfo);
+		boolean isTechSkillProcessed = latexService.processTemplate(templateTechSkill, targetTechSkill, techSkillInfo);
 
-		logTemplateProcessingResults(isMainProcessed, isExperienceProcessed, isEducationProcessed);
+		if (!targetMain.endsWith(".tex")) {
+			targetMain = targetMain.replaceAll("\\.\\w+$", "") + ".tex";
+		}
+		latexService.compileLatex(new java.io.File(targetMain));
+
+		logTemplateProcessingResults(isMainProcessed, isExperienceProcessed, isEducationProcessed,
+				isTechSkillProcessed);
 	}
 
 	private void logTemplateProcessingResults(boolean isMainProcessed, boolean isExperienceProcessed,
-			boolean isEducationProcessed) {
-		if (isMainProcessed && isExperienceProcessed && isEducationProcessed) {
+			boolean isEducationProcessed, boolean isTechSkillProcessed) {
+		if (isMainProcessed && isExperienceProcessed && isEducationProcessed && isTechSkillProcessed) {
 			System.out.println("Template processed successfully!");
 		} else {
 			if (!isMainProcessed) {
@@ -76,6 +88,9 @@ public class HomeServiceImpl implements HomeServiceInterface {
 			}
 			if (!isEducationProcessed) {
 				System.out.println("CV generation failed: Education template processing failed!");
+			}
+			if (!isTechSkillProcessed) {
+				System.out.println("CV generation failed: Technical skills template processing failed!");
 			}
 		}
 	}

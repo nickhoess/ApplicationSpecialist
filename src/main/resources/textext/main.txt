@@ -46,7 +46,7 @@
 %	Comment any of the lines below if they are not required
 %----------------------------------------------------------------------------------------
 
-\name{<name>}
+\name{<name>}{}
 \address{<address>}
 \mobile{<phone>}
 
@@ -64,7 +64,7 @@
 \position{<position>} % Your expertise/fields
 \quote{<quote>} % A quote or statement
 
-\makecvfooter{\today}{<name>~~~·~~~Résumé}{\thepage} % Specify the letter footer with 3 arguments: (<left>, <center>, <right>), leave any of these blank if they are not needed
+\makecvfooter{\today}{<name>~~~·~~~Résumé}{\thepage}
 
 %----------------------------------------------------------------------------------------
 
@@ -76,12 +76,12 @@
 %	CV/RESUME CONTENT
 %	Each section is imported separately, open each file in turn to modify content
 %----------------------------------------------------------------------------------------
-\input{cv-sections/experience.tex}
-\input{cv-sections/education.tex}
-\input{cv-sections/techstack.tex}
-\newpage
-\input{cv-sections/softskills.tex}
-\input{cv-sections/projects.tex}
+\input{workexperience_finalized.tex}
+\input{education_finalized.tex}
+\input{technicalSkills_finalized.tex}
+%\newpage
+%\input{cv-sections/softskills.tex}
+%\input{projects_finalized.tex}
 %\input{cv-sections/presentation.tex}
 %\input{cv-sections/writing.tex}
 %\input{cv-sections/committees.tex}

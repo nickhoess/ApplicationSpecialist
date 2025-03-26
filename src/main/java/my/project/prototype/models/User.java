@@ -11,7 +11,7 @@ public class User {
 	private String email;
 	private String phone;
 	private String address;
-	private List<String> skills;
+	private List<TechSkill> techSkills;
 	private List<WorkExperience> workExperiences; // Changed to List<WorkExperience>
 	private List<Education> education; // List of degrees or certifications
 	private List<SoftwareProject> projects;
@@ -25,7 +25,7 @@ public class User {
 	public User() {
 	}
 
-	public User(String name, String email, String phone, String address, List<String> skills,
+	public User(String name, String email, String phone, String address, List<TechSkill> techSkills,
 			List<WorkExperience> workExperiences, List<Education> education, List<SoftwareProject> projects,
 			String workExperiencesJsonFilePath, String skillsJsonFilePath, String educationJsonFilePath,
 			String projectsJsonFilePath) {
@@ -33,7 +33,7 @@ public class User {
 		this.email = email;
 		this.phone = phone;
 		this.address = address;
-		this.skills = skills;
+		this.techSkills = techSkills;
 		this.workExperiences = workExperiences;
 		this.education = education;
 		this.projects = projects;
@@ -107,12 +107,12 @@ public class User {
 		this.address = address;
 	}
 
-	public List<String> getSkills() {
-		return skills;
+	public List<TechSkill> getSkills() {
+		return techSkills;
 	}
 
-	public void setSkills(List<String> skills) {
-		this.skills = skills;
+	public void setSkills(List<TechSkill> skills) {
+		this.techSkills = skills;
 	}
 
 	public List<WorkExperience> getWorkExperiences() {
@@ -142,7 +142,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User{" + "name='" + name + '\'' + ", email='" + email + '\'' + ", phone='" + phone + '\''
-				+ ", address='" + address + '\'' + ", skills=" + skills + ", workExperiences=" + workExperiences
+				+ ", address='" + address + '\'' + ", skills=" + techSkills + ", workExperiences=" + workExperiences
 				+ ", education=" + education + ", projects=" + projects + ", skillsJsonFilePath='" + skillsJsonFilePath
 				+ '\'' + ", workExperiencesJsonFilePath='" + workExperiencesJsonFilePath + '\''
 				+ ", educationJsonFilePath='" + educationJsonFilePath + '\'' + ", projectsJsonFilePath='"

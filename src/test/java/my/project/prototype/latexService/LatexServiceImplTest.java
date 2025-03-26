@@ -36,30 +36,30 @@ public class LatexServiceImplTest {
 
 		// Create a temporary output file
 		File outputFile = File.createTempFile("output", ".txt");
+		String outputFilePath = outputFile.getAbsolutePath().replace(".txt", ".tex");
 
 		Map<String, String> values = new HashMap<>();
 		values.put("name", "John Doe");
 
-		boolean result = latexService.processTemplate(templateFile.getAbsolutePath(), outputFile.getAbsolutePath(),
-				values);
+		boolean result = latexService.processTemplate(templateFile.getAbsolutePath(), outputFilePath, values);
 
 		assertTrue(result);
 
 		// Verify the content of the output file
-		try (BufferedReader reader = new BufferedReader(new FileReader(outputFile))) {
+		try (BufferedReader reader = new BufferedReader(new FileReader(outputFilePath))) {
 			String line = reader.readLine();
 			assertTrue(line.equals("Hello, John Doe!"));
 		}
 
 		// Clean up temporary files
 		templateFile.delete();
-		outputFile.delete();
+		new File(outputFilePath).delete();
 	}
 
 	@Test
 	void testProcessTemplateReadError() {
 		String templatePath = "invalid/path/template.txt";
-		String fileOutPutPath = "src/test/resources/output.txt";
+		String fileOutPutPath = "src/test/resources/output.tex";
 		Map<String, String> values = new HashMap<>();
 
 		boolean result = latexService.processTemplate(templatePath, fileOutPutPath, values);
@@ -75,7 +75,7 @@ public class LatexServiceImplTest {
 			writer.write("Hello, <name>!");
 		}
 
-		String fileOutPutPath = "invalid/path/output.txt";
+		String fileOutPutPath = "invalid/path/output.tex";
 		Map<String, String> values = new HashMap<>();
 		values.put("name", "John Doe");
 

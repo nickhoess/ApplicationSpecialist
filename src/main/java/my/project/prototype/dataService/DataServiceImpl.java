@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import my.project.prototype.models.Education;
+import my.project.prototype.models.TechSkill;
 import my.project.prototype.models.User;
 import my.project.prototype.models.WorkExperience;
 
@@ -18,6 +19,12 @@ import my.project.prototype.models.WorkExperience;
 public class DataServiceImpl implements DataServiceInterface {
 
 	private final ObjectMapper objectMapper = new ObjectMapper();
+
+	@Override
+	public List<TechSkill> readTechnicalSkillsJsonData(String filePath) throws IOException {
+		return objectMapper.readValue(new FileReader(filePath),
+				objectMapper.getTypeFactory().constructCollectionType(List.class, TechSkill.class));
+	}
 
 	@Override
 	public List<WorkExperience> readExperienceJsonData(String filePath) throws IOException {
@@ -108,6 +115,22 @@ public class DataServiceImpl implements DataServiceInterface {
 		}
 
 		System.out.println("Education Map: " + map.toString());
+		return map;
+	}
+
+	@Override
+	public Map<String, String> buildTechnicalSkillsMapper(User user) throws IOException {
+		Map<String, String> map = new HashMap<>();
+
+		if (user.getSkills() != null) {
+			for (int i = 0; i < user.getSkills().size(); i++) {
+				TechSkill skill = user.getSkills().get(i);
+				map.put("category" + (i + 1), skill.getCategory());
+				map.put("skills" + (i + 1), String.join(", ", skill.getSkills()));
+			}
+		}
+
+		System.out.println("Technical Skills Map: " + map.toString());
 		return map;
 	}
 }
